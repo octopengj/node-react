@@ -38,10 +38,10 @@ app.post('/api/users/register', (req, res) =>{
   })
 })
 
-app.post('api/users/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
 
     //요청된 이메일을 데이터베이스에서 있는지 찾는다.
-    user.findOne({email: req.body.email}, (err, user) => {
+    User.findOne({email: req.body.email}, (err, user) => {
         if(!user) {
             return res.json({
                 loginSuccess: false,
@@ -66,7 +66,7 @@ app.post('api/users/login', (req, res) => {
     })
 })
 
-app.get('api/users/auth', auth, (req, res)=> {
+app.get('/api/users/auth', auth, (req, res)=> {
 
     // 여기까지 미들웨어를 통과해 왔다는 예기는 Authentication이 true라는 말
     res.status(200).json({
